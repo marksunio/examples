@@ -18,8 +18,6 @@ jobs:
     - get: concourse-examples
       trigger: true
       passed: [configure-self]
-    - set_pipeline: hello-world
-      file: concourse-examples/pipelines/hello-world.yml
     - set_pipeline: time-triggered
       file: concourse-examples/pipelines/time-triggered.yml
 
