@@ -17,6 +17,7 @@ jobs:
   plan: 
     - get: concourse-examples
       trigger: true
+      passed: [configure-self]
     - set_pipeline: hello-world
       file: concourse-examples/pipelines/hello-world.yml
 
