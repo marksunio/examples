@@ -3,14 +3,20 @@ resources:
   type: git
   icon: github
   source:
-    uri: git@github.com:marksunio/examples.git
+    uri: https://github.com/marksunio/examples.git
 
 jobs:
+- name: configure-self
+  plan:
+  - get: concourse-examples
+    trigger: true
+  - set_pipeline: reconfigure-pipelines
+    file: concourse-examples/pipelines/reconfigure-pipelines.yml
 - name: configure-pipelines
   public: true
   plan: 
     - get: concourse-examples
-    trigger: true
+      trigger: true
     - set_pipeline: hello-world
-    file: concourse-examples/pipelines/hello-world.yml
-    
+      file: concourse-examples/pipelines/hello-world.yml
+
